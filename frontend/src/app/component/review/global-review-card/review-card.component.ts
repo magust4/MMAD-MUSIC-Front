@@ -30,7 +30,7 @@ import { ReviewService } from '../../../service/review/review.service';
   styleUrl: './review-card.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ReviewCardComponent implements OnChanges {
+export class ReviewCardComponent{
 
   @Input() review!: Review;
 
@@ -40,17 +40,6 @@ export class ReviewCardComponent implements OnChanges {
     private cdr: ChangeDetectorRef
   ) { }
 
-
-  ngOnChanges() {
-
-    console.log(
-      "Review state:",
-      this.review.id,
-      this.review.likedByCurrentUser,
-      this.review.likeCount
-    );
-
-  }
 
 
 

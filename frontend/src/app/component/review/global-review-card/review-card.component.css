@@ -17,7 +17,8 @@
 .review-image {
   flex-shrink: 0;
   width: 150px;
-  height: 150px;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
 }
 
 .review-image img {
@@ -25,7 +26,6 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.15s ease;
 }
 
 .review-image:hover img {
@@ -82,3 +82,42 @@
   margin-top: auto;
 }
 
+@media (max-width: 700px) {
+
+  .review-row {
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px;
+  }
+
+
+ 
+  .review-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+  }
+
+
+  .review-body {
+    width: 100%;
+  }
+
+
+  .review-meta {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+
+  .review-date {
+    margin-top: 0;
+  }
+
+
+  .review-like {
+    margin-top: 0;
+  }
+
+}
