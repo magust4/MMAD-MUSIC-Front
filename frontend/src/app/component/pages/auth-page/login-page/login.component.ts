@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgIf } from '@angular/common';
@@ -29,7 +29,7 @@ import { PasswordRulesComponent } from '../../../password/password-rules/passwor
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
   router = inject(Router);
   userService = inject(UserService);
@@ -57,6 +57,15 @@ export class LoginComponent {
     login: '',
     password: ''
   };
+
+  ngOnInit(): void {
+    const state = history.state;
+
+    if (state?.username) {
+      this.loginObj.login = state.username;
+      this.isLoginView = true;
+    }
+  }
 
   onRegister() {
 
@@ -112,16 +121,21 @@ export class LoginComponent {
 
     }).subscribe({
       next: () => {
-        this.successMessage =
-          'Account created! Check your email for the verification code.';
-        this.router.navigate(
-          ['/verify'],
-          {
-            state: {
-              email: this.registerObj.email
-            }
-          }
-        );
+        this.successMessage = 'Account created! Please log in.';
+        this.errorMessage = '';
+
+        this.loginObj.login = this.registerObj.username;
+        this.loginObj.password = '';
+
+        this.registerObj = {
+          username: '',
+          email: '',
+          password: '',
+          confirmPassword: ''
+        };
+
+        // Switch back to the login view
+        this.isLoginView = true;
       },
       error: (err) => {
         this.errorMessage =
@@ -151,9 +165,9 @@ export class LoginComponent {
             res.token,
             res.username
           );
-        
+
           this.router.navigateByUrl('home');
-        
+
         },
 
         error: (err) => {
