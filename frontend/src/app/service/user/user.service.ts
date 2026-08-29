@@ -3,8 +3,7 @@ import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
 
 import { LoginResponse } from '../../core/dto/login-response.model';
-import { environment } from '../../../environments/environment.prod';
-
+import { environment } from '../../../environments/environment';
 
 export interface RegisterRequest {
   username: string;

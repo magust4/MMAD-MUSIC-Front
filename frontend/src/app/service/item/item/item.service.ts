@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { Item } from '../../../core/model/item/item.type';
 import { Artist } from '../../../core/model/item/artist.type';
 import { Album } from '../../../core/model/item/album.type';
-import { environment } from '../../../../environments/environment.prod';
+import { environment } from '../../../../environments/environment';
 
 type SpecificItemInstance = Artist | Album; // song;
 type ItemTypeName = 'ARTIST' | 'SONG' | 'ALBUM';
