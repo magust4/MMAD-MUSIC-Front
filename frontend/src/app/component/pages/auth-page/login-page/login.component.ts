@@ -83,7 +83,6 @@ export class LoginComponent implements OnInit {
         'Please fill out all required fields.';
 
       return;
-
     }
 
     if (!isValidEmail(this.registerObj.email)) {
@@ -92,14 +91,14 @@ export class LoginComponent implements OnInit {
         'Please enter a valid email address.';
 
       return;
-
     }
 
     if (!isValidPassword(this.registerObj.password)) {
+
       this.errorMessage =
         'Password does not meet the requirements.';
-      return;
 
+      return;
     }
 
     if (
@@ -111,8 +110,8 @@ export class LoginComponent implements OnInit {
         'Passwords do not match.';
 
       return;
-
     }
+
     this.userService.register({
 
       username: this.registerObj.username,
@@ -120,28 +119,27 @@ export class LoginComponent implements OnInit {
       password: this.registerObj.password
 
     }).subscribe({
+
       next: () => {
-        this.successMessage = 'Account created! Please log in.';
-        this.errorMessage = '';
+        this.router.navigate(
+          ['/verify'],
+          {
+            state: {
+              email: this.registerObj.email
+            }
+          }
+        );
 
-        this.loginObj.login = this.registerObj.username;
-        this.loginObj.password = '';
-
-        this.registerObj = {
-          username: '',
-          email: '',
-          password: '',
-          confirmPassword: ''
-        };
-
-        // Switch back to the login view
-        this.isLoginView = true;
       },
+
       error: (err) => {
+
         this.errorMessage =
           err.message ||
           'Registration failed. Please try again.';
+
       }
+
     });
   }
 
