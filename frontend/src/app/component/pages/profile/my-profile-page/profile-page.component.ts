@@ -190,4 +190,73 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
 
   }
 
+  onProfilePictureSelected(event: Event): void {
+  
+    const input = event.target as HTMLInputElement;
+  
+    if (!input.files || input.files.length === 0) {
+      return;
+    }
+  
+    const file = input.files[0];
+  
+    // -----------------------------
+    // Validate file type
+    // -----------------------------
+  
+    if (!file.type.startsWith('image/')) {
+  
+      console.error('Only image files are allowed.');
+  
+      input.value = '';
+  
+      return;
+    }
+  
+    // -----------------------------
+    // Validate file size
+    // -----------------------------
+  
+    const maxFileSize = 5 * 1024 * 1024;
+  
+    if (file.size > maxFileSize) {
+  
+      console.error(
+        'Profile picture must be smaller than 5 MB.'
+      );
+  
+      input.value = '';
+  
+      return;
+    }
+  
+    // -----------------------------
+    // Upload
+    // -----------------------------
+  
+    this.userService
+      .uploadProfilePicture(file)
+      .subscribe({
+  
+        next: () => {
+  
+          this.loadProfile();
+  
+          // Allow selecting the same file again
+          input.value = '';
+        },
+  
+        error: (error) => {
+  
+          console.error(
+            'Failed to upload profile picture:',
+            error
+          );
+  
+          input.value = '';
+        }
+  
+      });
+  }
+  
 }

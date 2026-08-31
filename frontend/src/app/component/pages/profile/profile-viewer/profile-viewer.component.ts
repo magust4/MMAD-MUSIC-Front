@@ -40,8 +40,12 @@ export class ProfileViewerComponent {
 
   @Input() cardComponent = 'ReviewCardComponent';
 
+  @Input() showChangeProfilePicture = false;
 
+
+  // -----------------------------
   // Events back to parent
+  // -----------------------------
 
   followClick() {
     this.follow.emit();
@@ -55,7 +59,6 @@ export class ProfileViewerComponent {
     this.logout.emit();
   }
 
-
   openUserList(title: string, users: string[]) {
     this.userList.emit({
       title,
@@ -64,7 +67,18 @@ export class ProfileViewerComponent {
   }
 
 
-  // outputs
+  // -----------------------------
+  // Profile Picture
+  // -----------------------------
+
+  profilePictureSelected(event: Event) {
+    this.profilePictureChange.emit(event);
+  }
+
+
+  // -----------------------------
+  // Outputs
+  // -----------------------------
 
   @Output() follow = new EventEmitter<void>();
 
@@ -77,4 +91,8 @@ export class ProfileViewerComponent {
     users: string[]
   }>();
 
+  @Output() profilePictureChange =
+    new EventEmitter<Event>();
+
 }
+

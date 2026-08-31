@@ -5,7 +5,25 @@
 
     <div class="profile-info">
 
-        <img class="profile-picture" [src]="u.profilePicUrl" alt="Profile picture">
+        <div class="profile-picture-container">
+
+            <img class="profile-picture" [src]="u.profilePicUrl || 'assets/images/default-profile.png'"
+                alt="Profile picture">
+
+            <ng-container *ngIf="showChangeProfilePicture">
+
+                <label class="profile-picture-edit" title="Change profile picture">
+
+                    <span>Change</span>
+
+                    <input type="file" accept="image/*" hidden (change)="profilePictureSelected($event)">
+
+                </label>
+
+            </ng-container>
+
+        </div>
+
 
 
         <h2 class="username">
@@ -15,74 +33,45 @@
 
         <div class="stats">
 
-            <span>
-                Reviews:
-                <strong>
-                    {{reviews.length}}
-                </strong>
-            </span>
-
-
+            <div class="stat">
+                <span>Reviews: </span>
+                <strong>{{reviews.length}}</strong>
+            </div>
+        
             <span class="divider">|</span>
-
-
-            <button mat-button (click)="openUserList('Followers',u.followers || [])">
-
-                Followers:
-                {{u.followers?.length || 0}}
-
+        
+            <button mat-button class="stat" (click)="openUserList('Followers', u.followers || [])">
+                <span>Followers: </span>
+                <strong>{{u.followers?.length || 0}}</strong>
             </button>
-
-
+        
             <span class="divider">|</span>
-
-
-            <button mat-button (click)="openUserList('Following',u.following || [])">
-
-                Following:
-                {{u.following?.length || 0}}
-
+        
+            <button mat-button class="stat" (click)="openUserList('Following', u.following || [])">
+                <span>Following: </span>
+                <strong>{{u.following?.length || 0}}</strong>
             </button>
-
-
-
+        
             <ng-container *ngIf="showFollow">
-
-
                 <span class="divider">|</span>
-
-
-                <button mat-button *ngIf="!isFollowing" (click)="followClick()">
-
+        
+                <button mat-button class="stat action" *ngIf="!isFollowing" (click)="followClick()">
                     Follow
-
                 </button>
-
-
-                <button mat-button *ngIf="isFollowing" (click)="unfollowClick()">
-
+        
+                <button mat-button class="stat action" *ngIf="isFollowing" (click)="unfollowClick()">
                     Unfollow
-
                 </button>
-
-
             </ng-container>
-
-
-
+        
             <ng-container *ngIf="showLogout">
-
                 <span class="divider">|</span>
-
-                <button mat-button (click)="logoutClick()">
-
+        
+                <button mat-button class="stat action" (click)="logoutClick()">
                     Logout
-
                 </button>
-
             </ng-container>
-
-
+        
         </div>
 
 

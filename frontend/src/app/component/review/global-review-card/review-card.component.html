@@ -28,12 +28,27 @@
         </ng-container>
       </span>
 
-      <h2 class="username clickable" [routerLink]="['/profile', review.username]">
-        {{ review.username }}
-      </h2>
+      <div class="review-user">
+        <a class="review-profile-picture-link" [routerLink]="['/profile', review.username]">
 
-      <span class="stars">
-        <i *ngFor="let _ of stars" class="fa fa-star"></i>
+          <img class="review-profile-picture" [src]="review.profilePicUrl || 'assets/images/default-profile.png'"
+            alt="Profile picture">
+        </a>
+
+        <h2 class="username clickable" [routerLink]="['/profile', review.username]">
+
+          {{ review.username }}
+
+        </h2>
+      </div>
+
+      <span class="stars" [attr.aria-label]="review.rating + ' out of 5 stars'">
+        <span
+          *ngFor="let star of [1, 2, 3, 4, 5]"
+          [class.filled]="star <= review.rating"
+          [class.empty]="star > review.rating">
+          ★
+        </span>
       </span>
 
       <p class="description">

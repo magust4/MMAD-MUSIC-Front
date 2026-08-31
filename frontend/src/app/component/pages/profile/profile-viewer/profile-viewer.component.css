@@ -13,20 +13,60 @@
     margin: 0;
     font-size: 2rem;
     font-weight: 700;
-    color: #333;
+    color: #fae3b0;
 }
 
 
 /* STATS */
+
+.profile-header .stats .stat {
+    color: #fae3b0;
+}
+
+.profile-header .stats button.stat {
+    color: #fae3b0;
+}
+
 .profile-header .stats {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
+    gap: 10px;
 
-    color: #555;
+    color: #fae3b0;
     font-size: 0.95rem;
     white-space: nowrap;
+}
+
+.profile-header .stat {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+
+    padding: 8px 14px;
+
+    border: 1px solid rgba(250, 227, 176, 0.4);
+    border-radius: 8px;
+
+    background: rgba(255, 255, 255, 0.05);
+
+    color: #fae3b0;
+    white-space: nowrap;
+}
+
+.profile-header .stat span {
+    font-size: 0.8rem;
+}
+
+.profile-header .stat strong {
+    font-size: 1.1rem;
+    color: #fae3b0;
+}
+
+.divider {
+    color: #bbb;
+    font-weight: 300;
 }
 
 
@@ -40,40 +80,48 @@ strong {
     color: #222;
 }
 
-
-/* FOLLOWERS / FOLLOWING BUTTONS */
-.profile-header button[mat-button] {
-    min-width: auto;
-
-    background-color: #ffffff;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-
-    padding: 0.5rem 1rem;
-
-    font-size: inherit;
-    font-weight: 500;
-    color: #0057e7;
-
-    transition: all 0.3s ease;
-
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+.profile-picture-container {
+    position: relative;
+    display: inline-block;
 }
 
+.profile-picture {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
 
-.profile-header button[mat-button]:hover {
-    background-color: #e0f0ff;
-    border-color: #80caff;
+.profile-picture-edit {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
 
-    color: #000;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
 
-    transform: scale(1.05);
+    padding: 6px 12px;
 
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+
+    font-size: 0.8rem;
+    font-weight: 500;
 
     cursor: pointer;
+
+    opacity: 0;
+    transition: opacity 0.2s ease;
 }
 
+.profile-picture-container:hover .profile-picture-edit {
+    opacity: 1;
+}
+
+.profile-picture-edit:hover {
+    background: rgba(0, 0, 0, 0.85);
+}
 
 /* RESPONSIVE */
 @media (max-width: 600px) {
@@ -98,7 +146,7 @@ strong {
 }
 
 .profile-info {
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-  }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

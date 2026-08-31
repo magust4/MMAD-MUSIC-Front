@@ -44,7 +44,7 @@ export interface MessageResponse {
 
 export interface UserDTO {
   username: string;
-  profilePicUrl: string;
+  profilePicUrl: string | null;
   followers?: string[];
   following?: string[];
 }
@@ -314,6 +314,19 @@ export class UserService {
       catchError(this.handleError)
     );
 
+  }
+
+  uploadProfilePicture(file: File): Observable<string> {
+    const formData = new FormData();
+    formData.append('file', file);
+  
+    return this.http.post(
+      `${this.apiUrl}/upload-profile-picture`,
+      formData,
+      {
+        responseType: 'text'
+      }
+    );
   }
 
 }

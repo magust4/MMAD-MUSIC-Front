@@ -9,9 +9,9 @@ main {
   box-sizing: border-box;
 }
 
-.custom-title {
-  font-family: 'Rollingstar', sans-serif;
-  font-size: 60px;
-  width: fit-content;
+.custom-logo {
+  display: block;
+  width: 500px;
+  height: auto;
   margin: 0 auto;
 }

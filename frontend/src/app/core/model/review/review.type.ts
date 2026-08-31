@@ -6,6 +6,7 @@ export interface Review {
   description: string;
   item: Item;
   username: string;
+  profilePicUrl: string | null;
   createdAt: string;
   updatedAt: string;
 

@@ -4,7 +4,7 @@
 
 .review-card {
   width: 100%;
-  background: #dada14;
+  background: #91c0ef;
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-card);
   overflow: hidden;
@@ -83,17 +83,27 @@
 
 .stars {
   display: inline-flex;
-  gap: 3px;
-  padding: 5px 10px;
-  background: rgba(0, 0, 0, 0.35);
-  border-radius: 8px;
-  color: #FFD700;
-  font-size: 20px;
+  align-items: center;
+  gap: 4px;
+
+  margin-top: 8px;
+  padding: 4px 8px;
+
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
 }
 
-.stars i {
-  color: gold;
-  font-size: 20px;
+.stars > span {
+  font-size: 17px;
+  line-height: 1;
+}
+
+.stars .filled {
+  color: #ffc107;
+}
+
+.stars .empty {
+  color: rgba(255, 255, 255, 0.35);
 }
 
 .description {
@@ -111,6 +121,29 @@
   flex-direction: column;
 }
 
+.review-user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.review-profile-picture-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.review-profile-picture {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.review-user .username {
+  margin: 0;
+}
+
 .review-date {
   font-size: .85rem;
   color: var(--text-muted);
@@ -122,6 +155,8 @@
   right: var(--space-lg);
   bottom: var(--space-lg);
 }
+
+
 
 
 /* =========================

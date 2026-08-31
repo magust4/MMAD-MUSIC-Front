@@ -16,7 +16,7 @@
 
   font-size: 1rem;
 
-  background: var(--card-bg);
+  background: #f7f0e5;
   color: var(--text-primary);
 
   border: 1px solid var(--border-color);
@@ -143,7 +143,7 @@
 
 .results-container {
   margin-top: var(--space-md);
-  background: rgba(255, 255, 255, .05);
+  background: #7ea5dc;
   border-radius: var(--radius-lg);
   overflow: hidden;
   padding: var(--space-sm);
@@ -156,7 +156,6 @@
 }
 
 .results-card {
-  background: rgba(255, 255, 255, .08);
   border-radius: var(--radius-lg);
   padding: var(--space-sm);
   box-shadow: var(--shadow-card);

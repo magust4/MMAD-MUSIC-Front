@@ -5,8 +5,7 @@ header {
   height: 100vh;
   width: 80px;
   /* compact sidebar */
-  background-color: #fe7614;
-  color: white;
+  background-color: #cf541c;
   display: flex;
   flex-direction: column;
   padding: 20px 0;
@@ -33,7 +32,7 @@ nav {
 /* Links and icons */
 nav a,
 nav span {
-  color: white;
+  color: #f7f0e5;
   text-decoration: none;
   transition: color 0.3s ease, background-color 0.3s ease;
   padding: 12px;
@@ -65,7 +64,7 @@ nav i {
 
 /* Record icon color override */
 .record-icon {
-  color: black !important;
+  color: #f7f0e5;
 }
 
 .search-panel {
@@ -130,6 +129,6 @@ nav i {
 }
 
 .clear-btn:hover {
-  color: #000;
+  color: #f7f0e5;
 }
 
