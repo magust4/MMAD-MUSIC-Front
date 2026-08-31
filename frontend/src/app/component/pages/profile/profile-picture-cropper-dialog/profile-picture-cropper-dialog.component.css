@@ -1,0 +1,9 @@
+image-cropper {
+    width: 100%;
+    max-width: 500px;
+    display: block;
+}
+
+mat-dialog-content {
+    padding: 0 24px 20px;
+}

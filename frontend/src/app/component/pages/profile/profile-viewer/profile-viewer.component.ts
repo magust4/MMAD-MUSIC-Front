@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialog } from '@angular/material/dialog';
+import { ProfilePictureCropperDialogComponent } from '../profile-picture-cropper-dialog/profile-picture-cropper-dialog.component';
 
 import { ReviewViewerComponent } from '../../../review/review-viewer/review-viewer.component';
 import { ProfileHeaderSkeletonComponent } from '../my-profile-page/profile-header-skeleton/profile-header-skeleton.component';

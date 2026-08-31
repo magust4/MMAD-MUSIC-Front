@@ -3,15 +3,14 @@ import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
 
 import { ProfileViewerComponent } from '../profile-viewer/profile-viewer.component';
-
+import { MatDialog } from '@angular/material/dialog';
+import { ProfilePictureCropperDialogComponent } from '../profile-picture-cropper-dialog/profile-picture-cropper-dialog.component';
 import { ReviewService } from '../../../../service/review/review.service';
 import { UserService, UserDTO } from '../../../../service/user/user.service';
 import { AuthService } from '../../../../service/user/auth/auth.service';
 import { ReviewStateService } from '../../../../service/review/review-state/review-state.service.spec';
 
 import { Review } from '../../../../core/model/review/review.type';
-
-import { MatDialog } from '@angular/material/dialog';
 import { UserListDialogComponent } from '../../../user-list-dialog/user-list-dialog.component';
 
 import { Router } from '@angular/router';
@@ -34,6 +33,8 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
   isLoading = true;
 
   isReviewsLoading = true;
+
+  isUploadingProfilePicture = false;
 
   errorMessage = '';
 
@@ -191,72 +192,71 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
   }
 
   onProfilePictureSelected(event: Event): void {
-  
+
     const input = event.target as HTMLInputElement;
-  
+
     if (!input.files || input.files.length === 0) {
       return;
     }
-  
+
     const file = input.files[0];
-  
-    // -----------------------------
-    // Validate file type
-    // -----------------------------
-  
-    if (!file.type.startsWith('image/')) {
-  
-      console.error('Only image files are allowed.');
-  
-      input.value = '';
-  
-      return;
-    }
-  
-    // -----------------------------
-    // Validate file size
-    // -----------------------------
-  
-    const maxFileSize = 5 * 1024 * 1024;
-  
-    if (file.size > maxFileSize) {
-  
-      console.error(
-        'Profile picture must be smaller than 5 MB.'
-      );
-  
-      input.value = '';
-  
-      return;
-    }
-  
-    // -----------------------------
-    // Upload
-    // -----------------------------
-  
-    this.userService
-      .uploadProfilePicture(file)
-      .subscribe({
-  
-        next: () => {
-  
-          this.loadProfile();
-  
-          // Allow selecting the same file again
-          input.value = '';
-        },
-  
-        error: (error) => {
-  
-          console.error(
-            'Failed to upload profile picture:',
-            error
-          );
-  
-          input.value = '';
+
+    const dialogRef = this.dialog.open(
+      ProfilePictureCropperDialogComponent,
+      {
+        width: '600px',
+        maxWidth: '95vw',
+        disableClose: true,
+        data: {
+          file
         }
-  
-      });
+      }
+    );
+
+    dialogRef.afterClosed().subscribe((croppedBlob: Blob | undefined) => {
+
+      if (!croppedBlob) {
+        input.value = '';
+        return;
+      }
+
+      const croppedFile = new File(
+        [croppedBlob],
+        'profile-picture.jpg',
+        {
+          type: 'image/jpeg'
+        }
+      );
+
+      this.isUploadingProfilePicture = true;
+
+      this.userService
+        .uploadProfilePicture(croppedFile)
+        .subscribe({
+
+          next: () => {
+
+            this.isUploadingProfilePicture = false;
+
+            this.loadProfile();
+
+          },
+
+          error: (error) => {
+
+            console.error(
+              'Failed to upload profile picture:',
+              error
+            );
+
+            this.isUploadingProfilePicture = false;
+
+          }
+
+        });
+
+      input.value = '';
+    });
   }
-  
+
 }
