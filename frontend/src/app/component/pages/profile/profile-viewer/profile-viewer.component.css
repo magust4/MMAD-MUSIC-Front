@@ -127,12 +127,24 @@ strong {
 @media (max-width: 600px) {
 
     .profile-header .stats {
-        flex-direction: column;
-        gap: 0.5rem;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 6px;
+        
+        font-size: 0.85rem;
+        white-space: nowrap;
+    }
+
+    .profile-header .stat {
+        white-space: nowrap;
+        padding: 6px 8px;
     }
 
     .divider {
-        display: none;
+        display: inline;
     }
 
 }

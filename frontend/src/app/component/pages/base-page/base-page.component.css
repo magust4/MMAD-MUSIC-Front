@@ -15,3 +15,14 @@ main {
   height: auto;
   margin: 0 auto;
 }
+
+/* MOBILE */
+@media (max-width: 600px) {
+
+  main {
+    margin-left: 0;
+    width: 100%;
+    padding: 20px;
+    padding-bottom: 85px;
+  }
+}
