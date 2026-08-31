@@ -1,0 +1,35 @@
+<h2 mat-dialog-title>Crop Profile Picture</h2>
+
+<mat-dialog-content>
+
+    <image-cropper
+    [imageFile]="data.file"
+    [maintainAspectRatio]="true"
+    [aspectRatio]="1 / 1"
+    [resizeToWidth]="512"
+    [resizeToHeight]="512"
+    [onlyScaleDown]="true"
+    [cropperMinWidth]="200"
+    [roundCropper]="true"
+    format="jpeg"
+    output="blob"
+    [imageQuality]="85"
+    (imageCropped)="imageCropped($event)">
+  </image-cropper>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+
+  <button mat-button (click)="cancel()">
+    Cancel
+  </button>
+
+  <button
+    mat-raised-button
+    (click)="save()"
+    [disabled]="!croppedBlob">
+    Save
+  </button>
+
+</mat-dialog-actions>
