@@ -17,6 +17,7 @@ import { Song } from '../../../core/model/item/song.type';
 import { Item } from '../../../core/model/item/item.type';
 
 import { ReviewService } from '../../../service/review/review.service';
+import { AuthService } from '../../../service/user/auth/auth.service';
 
 @Component({
   selector: 'app-review-card',
@@ -37,6 +38,7 @@ export class ReviewCardComponent{
 
   constructor(
     private reviewService: ReviewService,
+    private authService: AuthService,
     private cdr: ChangeDetectorRef
   ) { }
 
@@ -120,6 +122,10 @@ export class ReviewCardComponent{
 
   get stars(): number[] {
     return Array(this.review?.rating || 0);
+  }
+
+  profileRoute(username: string): string[] {
+    return this.authService.getProfileRoute(username);
   }
 
 

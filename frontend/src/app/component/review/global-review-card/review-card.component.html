@@ -29,13 +29,13 @@
       </span>
 
       <div class="review-user">
-        <a class="review-profile-picture-link" [routerLink]="['/profile', review.username]">
+        <a class="review-profile-picture-link" [routerLink]="profileRoute(review.username)">
 
           <img class="review-profile-picture" [src]="review.profilePicUrl || 'assets/images/default-profile.png'"
             alt="Profile picture">
         </a>
 
-        <h2 class="username clickable" [routerLink]="['/profile', review.username]">
+        <h2 class="username clickable" [routerLink]="profileRoute(review.username)">
 
           {{ review.username }}
 

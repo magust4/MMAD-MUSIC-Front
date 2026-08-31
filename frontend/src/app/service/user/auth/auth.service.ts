@@ -28,6 +28,12 @@ export class AuthService {
     return localStorage.getItem(this.usernameKey);
   }
 
+  getProfileRoute(username: string): string[] {
+    return this.getUsername() === username
+      ? ['/me']
+      : ['/profile', username];
+  }
+
   // -------------------------
   // AUTH STATE
   // -------------------------
