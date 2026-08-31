@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 
+import { AuthService } from '../../service/user/auth/auth.service';
+
 @Component({
   selector: 'app-user-list-dialog',
   standalone: true,
@@ -18,13 +20,21 @@ import { MatButtonModule } from '@angular/material/button';
 export class UserListDialogComponent {
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: { title: string; users: string[] },
+    @Inject(MAT_DIALOG_DATA)
+    public data: { title: string; users: string[] },
+
     private dialogRef: MatDialogRef<UserListDialogComponent>,
-    private router: Router
+
+    private router: Router,
+
+    private authService: AuthService
   ) {}
 
   goToProfile(username: string) {
     this.dialogRef.close();
-    this.router.navigate(['/profile', username]);
+
+    this.router.navigate(
+      this.authService.getProfileRoute(username)
+    );
   }
 }

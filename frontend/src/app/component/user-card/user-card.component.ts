@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { UserDTO } from '../../service/user/user.service';
-
+import { AuthService } from '../../service/user/auth/auth.service';
 @Component({
   selector: 'app-user-card',
   standalone: true,
@@ -14,9 +14,14 @@ export class UserCardComponent {
 
   @Input() user!: UserDTO;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private authService: AuthService
+  ) { }
 
   goToProfile(): void {
-    this.router.navigate(['/profile', this.user.username]);
+    this.router.navigate(
+      this.authService.getProfileRoute(this.user.username)
+    );
   }
 }
