@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
 <app-item-page-skeleton *ngIf="isLoading"></app-item-page-skeleton>
 
 <div class="page-layout" *ngIf="!isLoading">
@@ -107,14 +109,21 @@
 
         </ng-container>
 
+        <div class="item-actions">
 
-        <button class="review-btn" (click)="openReviewModal()">
+          <button class="review-btn" (click)="openReviewModal()">
+            Write a Review
+          </button>
 
-          Write a Review
+          <a class="spotify-btn"
+            [href]="'https://open.spotify.com/' + (item.type === 'song' ? 'track' : item.type) + '/' + item.sourceId"
+            target="_blank" rel="noopener noreferrer" title="Open in Spotify">
 
-        </button>
+            <i class="fa fa-spotify"></i>
 
+          </a>
 
+        </div>
       </div>
 
     </div>
