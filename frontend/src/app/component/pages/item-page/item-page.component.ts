@@ -169,6 +169,23 @@ export class ItemPageComponent implements OnInit, OnDestroy {
 
   }
 
+  openSpotify(event: Event): void {
+
+    event.stopPropagation();
+
+    if (!this.item?.sourceId) {
+      return;
+    }
+
+    const type = this.isAlbum ? 'album' : 'track';
+
+    const url =
+      `https://open.spotify.com/${type}/${this.item.sourceId}`;
+
+    window.open(url, '_blank');
+
+  }
+
 
   openReviewModal(): void {
 

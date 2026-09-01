@@ -31,140 +31,172 @@
    ITEM HEADER
    ========================== */
 
-   .item-header {
-    display: flex;
-    align-items: flex-start;
-    gap: var(--space-lg);
-  
-    padding: var(--space-lg);
-    margin-bottom: var(--space-lg);
-  
-    background: #91c0ef;
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-card);
-  
-    flex-wrap: wrap;
-  }
-  
-  .item-image {
-    width: clamp(140px, 20vw, 250px);
-    aspect-ratio: 1;
-    height: auto;
-  
-    object-fit: cover;
-    flex-shrink: 0;
-  
-    border-radius: var(--radius-md);
-  }
-  
-  
-  .item-details {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  
-    gap: var(--space-sm);
-  
-    flex: 1;
-    min-width: 0;
-  
-    color: #333;
-  }
-  
-  
-  .item-details h1 {
-    margin: 0;
-  
-    color: var(--text-primary);
-  
-    font-size: 2rem;
-    font-weight: 700;
-    line-height: 1.2;
-  
-    overflow-wrap: break-word;
-  }
-  
-  
-  .item-type {
-    color: #333;
-    font-size: 1rem;
-    font-weight: 500;
-  }
-  
-  
-  .item-artists {
-    font-size: 1rem;
-    font-weight: 500;
-    color: #333;
-  }
-  
-  
-  .artist-link {
-    font-weight: 600;
-    cursor: pointer;
-    text-decoration: none;
-  }
-  
-  
-  .artist-link:hover {
-    text-decoration: underline;
-  }
-  
-  
-  .rating-summary {
-    margin: 4px 0;
-  
-    font-size: 1rem;
-    color: #333;
-  }
-  
-  
-  .rating-summary strong {
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: #333;
-  }
-  
-  
-  .item-details p {
-    margin: 0;
-    color: #333;
-    line-height: 1.4;
-  }
+.item-header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-lg);
 
-/* ==========================
-   BUTTONS
-   ========================== */
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+
+  background: #91c0ef;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+
+  flex-wrap: wrap;
+}
+
+.item-image {
+  width: clamp(140px, 20vw, 250px);
+  aspect-ratio: 1;
+  height: auto;
+
+  object-fit: cover;
+  flex-shrink: 0;
+
+  border-radius: var(--radius-md);
+}
+
+
+.item-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  gap: var(--space-sm);
+
+  flex: 1;
+  min-width: 0;
+
+  color: #333;
+}
+
+
+.item-details h1 {
+  margin: 0;
+
+  color: var(--text-primary);
+
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+
+  overflow-wrap: break-word;
+}
+
+
+.item-type {
+  color: #333;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+
+.item-artists {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+}
+
+
+.artist-link {
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+
+.artist-link:hover {
+  text-decoration: underline;
+}
+
+
+.rating-summary {
+  margin: 4px 0;
+
+  font-size: 1rem;
+  color: #333;
+}
+
+
+.rating-summary strong {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #333;
+}
+
+
+.item-details p {
+  margin: 0;
+  color: #333;
+  line-height: 1.4;
+}
+
+.item-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
 
 /* ==========================
    BUTTON
    ========================== */
 
-   .review-btn {
-    margin-top: var(--space-md);
-  
-    padding: 10px 18px;
-  
-    background: rgba(255, 255, 255, 0.7);
-    color: #333;
-  
-    border: none;
-    border-radius: 999px;
-  
-    font-weight: 700;
-  
-    cursor: pointer;
-  
-    transition:
-      transform 0.2s ease,
-      background-color 0.2s ease;
-  }
-  
-  
-  .review-btn:hover {
-    transform: translateY(-2px);
-    background: rgba(255, 255, 255, 0.9);
-  }
+.review-btn {
+  padding: 10px 18px;
+
+  background: rgba(255, 255, 255, 0.7);
+  color: #333;
+
+  border: none;
+  border-radius: 999px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
+}
+
+
+.review-btn:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.spotify-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
+
+  background: #191414;
+  color: #1db954;
+
+  text-decoration: none;
+
+  font-size: 1.4rem;
+
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.spotify-btn:hover {
+  transform: translateY(-2px);
+  background: #000;
+}
+
+.spotify-btn i {
+  line-height: 1;
+}
 
 /* ==========================
    SIDE BOXES
@@ -368,82 +400,6 @@
 /* ==========================
    RESPONSIVE
    ========================== */
-
-@media (max-width: 900px) {
-
-
-  .page-layout {
-
-    flex-direction: column;
-
-  }
-
-
-  .main,
-  .side {
-
-    width: 100%;
-
-  }
-
-
-  .side {
-
-    position: static;
-
-    min-width: unset;
-
-  }
-
-}
-
-
-
-@media (max-width: 700px) {
-
-
-  .item-header {
-
-    flex-direction: column;
-
-    align-items: flex-start;
-
-  }
-
-
-  .item-image {
-
-    width: 140px;
-
-    height: 140px;
-
-  }
-
-
-  .item-details {
-
-    width: 100%;
-
-  }
-
-
-  .item-details h1 {
-
-    font-size: 1.5rem;
-
-  }
-
-
-  .skeleton-image {
-
-    width: 140px;
-
-    height: 140px;
-
-  }
-
-}
-
 @media (max-width: 700px) {
 
   .item-header {
@@ -463,6 +419,11 @@
 
   .item-details h1 {
     font-size: 1.5rem;
+  }
+
+  .skeleton-image {
+    width: 140px;
+    height: 140px;
   }
 
 }
