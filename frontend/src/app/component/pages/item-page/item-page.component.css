@@ -400,8 +400,49 @@
 /* ==========================
    RESPONSIVE
    ========================== */
-@media (max-width: 700px) {
+/* ========================== RESPONSIVE ========================== */
+@media (max-width: 900px) {
+  .page-layout {
+    flex-direction: column;
+  }
 
+  .main,
+  .side {
+    width: 100%;
+  }
+
+  .side {
+    position: static;
+    min-width: unset;
+  }
+}
+
+@media (max-width: 700px) {
+  .item-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .item-image {
+    width: 140px;
+    height: 140px;
+  }
+
+  .item-details {
+    width: 100%;
+  }
+
+  .item-details h1 {
+    font-size: 1.5rem;
+  }
+
+  .skeleton-image {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+@media (max-width: 700px) {
   .item-header {
     flex-direction: column;
     align-items: flex-start;
@@ -420,10 +461,4 @@
   .item-details h1 {
     font-size: 1.5rem;
   }
-
-  .skeleton-image {
-    width: 140px;
-    height: 140px;
-  }
-
 }
