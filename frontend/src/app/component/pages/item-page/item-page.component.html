@@ -61,14 +61,14 @@
 
         </div>
         <p class="rating-summary">
-
-          <strong>
-            {{averageRating | number:'1.1-1'}}
-          </strong>/5
+          <span class="stars">
+            <span *ngFor="let star of [1, 2, 3, 4, 5]" [class.filled]="star <= averageRating">
+              ★
+            </span>
+          </span>
 
           ({{reviewCount}}
           {{reviewCount === 1 ? 'review' : 'reviews'}})
-
         </p>
 
         <ng-container *ngIf="album as currentAlbum">
